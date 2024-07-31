@@ -7,19 +7,24 @@ let adjective_box = document.getElementById("adjective");
 let submit_button = document.getElementById("submit_button");
 let title = document.getElementById("main_title")
 let adlib = document.querySelectorAll("adlib");
-let story_result = document.getElementById("story_result");
+let story_result;
+let userInput_noun;
+let userInput_verb;
+let UserInput_adjective;
+let userInput_title;
 
-
-function add(event) {
+function storeUserInput(event) {
     event.preventDefault();
-    let userInput_title = main_title.value;
-    let userInput_noun = noun_box.value;
-    let userInput_verb = verb_box.value;
-    let UserInput_adjective = adjective_box.value;
+    console.log(main_title.value);
+    userInput_noun = noun_box.value;
+    userInput_verb = verb_box.value;
+    UserInput_adjective = adjective_box.value;
+    userInput_title = main_title.value
 
-    story_result.innerText = "Last Night I had " + userInput_noun + " and today I had to " + userInput_verb + ". what a " + UserInput_adjective + "day"
+    story_result = "Last Night I had " + userInput_noun + " and today I had to " + userInput_verb + ". what a " + UserInput_adjective + "day"
 
-
+    clearContent()
+    showStoryResult()
 
 
 
@@ -27,11 +32,26 @@ function add(event) {
 
 function updateTitle(event) {
     event.preventDefault();
-    let userInput_title = main_title.value;
-    title.innerText = userInput_title;
+    let userInput_title_update = main_title.value;
+    title.innerText = userInput_title_update;
+    
 
 }
 
+function showStoryResult() {
+    document.body.innerHTML = "<h1>" + userInput_title + "</h1><h3>" + story_result + "</h3>"
+    document.body.style.textAlign = "center"
+    
+    
 
-main_title.addEventListener("input", updateTitle)
-submit_button.addEventListener("click",add )
+
+}
+
+function clearContent() {
+    document.body.innerHTML = '';
+}
+
+
+main_title.addEventListener("input", updateTitle);
+submit_button.addEventListener("click", storeUserInput )
+
