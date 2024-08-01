@@ -19,7 +19,11 @@ function storeUserInput(event) {
     userInput_noun = noun_box.value;
     userInput_verb = verb_box.value;
     UserInput_adjective = adjective_box.value;
-    userInput_title = main_title.value
+    userInput_title = main_title.value;
+    if (userInput_noun == "" || userInput_verb == "" || UserInput_adjective == "" || userInput_title =="") {
+        alert("You need to fill the inputs")
+        return;
+    }
 
     story_result = "Last Night I had " + userInput_noun + " and today I had to " + userInput_verb + ". what a " + UserInput_adjective + "day"
 
